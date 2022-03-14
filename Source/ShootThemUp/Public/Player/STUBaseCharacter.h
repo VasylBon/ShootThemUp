@@ -11,16 +11,16 @@ class USpringArmComponent;
 class USTUHealthComponent;
 class UTextRenderComponent;
 
+
 UCLASS()
 class SHOOTTHEMUP_API ASTUBaseCharacter : public ACharacter
 {
     GENERATED_BODY()
 
   public:
-    ASTUBaseCharacter(const FObjectInitializer& ObjInit);
+    ASTUBaseCharacter(const FObjectInitializer &ObjInit);
 
   protected:
-
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
     USpringArmComponent *SpringArmComponent;
 
@@ -32,6 +32,9 @@ class SHOOTTHEMUP_API ASTUBaseCharacter : public ACharacter
 
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
     UTextRenderComponent *HealthTextComponent;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Animation")
+    UAnimMontage *DeathAnimMontage;
 
     virtual void BeginPlay() override;
 
@@ -47,7 +50,6 @@ class SHOOTTHEMUP_API ASTUBaseCharacter : public ACharacter
     float GetMovementDirection() const;
 
   private:
-
     bool WantsToRun = false;
     bool IsMovingForward = false;
 
@@ -55,5 +57,8 @@ class SHOOTTHEMUP_API ASTUBaseCharacter : public ACharacter
     void MoveRight(float Amount);
 
     void OnStartRunning();
-    void OnStopRunning(); 
+    void OnStopRunning();
+
+    void OnDeath();
+    void OnHealthChanged(float Health);
 };
