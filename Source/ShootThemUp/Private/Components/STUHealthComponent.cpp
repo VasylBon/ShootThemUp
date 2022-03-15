@@ -5,7 +5,7 @@
 #include "Engine/World.h"
 #include "TimerManager.h"
 
-DEFINE_LOG_CATEGORY_STATIC(LogHealthComponent, All, All)
+DEFINE_LOG_CATEGORY_STATIC(LogHealthComponent, All, All);
 
 USTUHealthComponent::USTUHealthComponent()
 {
